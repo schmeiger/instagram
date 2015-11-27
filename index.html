@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name=“viewport” content=“width=device-width, initial-scale=1.0, maximum-scale=1.0”>	
+	<meta name="format-detection" content="telephone=no">
+	
+	<title></title>
+
+	<link rel="shortcut icon" href="">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body ng-controller="instagramRequest">
+
+	<div class="wrapper">
+		
+		<h1>
+			<img src="img/ng-instagram.png" alt="">
+		</h1>
+		
+		<form name="searchForm" ng-submit="searchSubmit()">
+			<input type="search" name="search" ng-model="data.search"/>
+			<input type="submit" name="submit" value="Search" />
+		</form>
+
+		<h3>We found {{results}} for "{{searchWord}}"</h3>
+
+		<section class="results">
+			
+
+
+		</section>
+
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
+	<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+function callback(a){alert(a)}angular.module("myApp",[]).controller("instagramRequest",function(a,c){a.searchSubmit=function(){var e=a.data.search;c({url:"https://api.instagram.com/v1/tags/"+e+"/media/recent?access_token=96ab943cbd594376b97d91bbe0588cb8",method:"GET"}).then(function(a){console.log("Success!")},function(a){console.log("Failure :(")})}});
