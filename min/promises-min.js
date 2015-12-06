@@ -1,0 +1,1 @@
+angular.module("myApp",[]).controller("greetingCtrl",function(e,n){function t(){var e=n.defer();return setTimeout(function(){e.resolve()},2e3),e.promise}e.saveSettings=function(){e.notifySaved=!0,t().then(function(){e.notifySaved=!1})}});

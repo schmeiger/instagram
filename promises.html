@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name=“viewport” content=“width=device-width, initial-scale=1.0, maximum-scale=1.0”>	
+	<meta name="format-detection" content="telephone=no">
+	
+	<title></title>
+
+	<link rel="shortcut icon" href="">
+	<link rel="stylesheet" href="css/styles.css">
+ 
+  </head>
+
+  <body ng-controller="greetingCtrl">
+    <h1>Hello Plunker!</h1>
+
+
+    <div ng-if="notifySaved">
+      Your password has been saved.
+    </div>
+	<div class="wrapper">
+		<div ng-if="notifySaved">
+	      Your password has been saved.
+	    </div>
+	    <form ng-submit="saveSettings()">
+	      <p>
+	        <label>Password:</label>
+	        <input type="password" ng-model="data.password" name="password" required />
+	      </p>
+	      <br/>
+	      <p>
+	        <label>Password Confirmation:</label>
+	        <input type="password" ng-model="data.password_confirm" name="password_confirm" required />
+	      </p>
+	      <br/>
+	      <p>
+	        <input type="submit" />
+	      </p>
+	    </form>
+	</div>
+
+  </body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="js/promises.js"></script>
+
+</html>
