@@ -87,6 +87,10 @@ h3 {
 	margin: 5rem 0;
 }
 
+p {
+	display: block;
+}
+
 input {
 	display: inline-block;
 	font-size: 2.2rem;
@@ -117,9 +121,13 @@ input[type="submit"]:hover {
 	color: #fff;
 }
 
-section {
+.flex-box {
 	display: flex;
   	flex-flow: row wrap;
+}
+
+.flex-box p {
+	padding: 2rem;
 }
 
 

@@ -24,11 +24,19 @@
 			<input type="submit" name="submit" value="Search" />
 		</form>
 
-		<h3>We found {{results}} for "{{searchWord}}"</h3>
-
-		<section class="results">
+		<section class="results" ng-show="instagramResponse">
 			
+			<h3>We found {{instagramResponse.data.length}} for "{{data.search}}"</h3>
 
+			<div class="flex-box">
+				<p ng-repeat="tag in instagramResponse.data">{{tag.name}}</p>
+			</div>
+
+			<div class="flex-box">
+				<figure ng-repeat="picture in instagramImgResponse.data">
+					<img ng-src="{{picture.images.standart_resolution.url}}" alt="{{picture.caption.text}}"/>
+				</figure>
+			</div>
 
 		</section>
 
