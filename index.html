@@ -33,8 +33,13 @@
 			</div>
 
 			<div class="flex-box">
+				<!--
 				<figure ng-repeat="picture in instagramImgResponse.data">
 					<img ng-src="{{picture.images.standart_resolution.url}}" alt="{{picture.caption.text}}"/>
+				</figure>
+				-->
+				<figure ng-repeat="picture in instagramImgResponse">
+					<img ng-src="{{picture}}"/>
 				</figure>
 			</div>
 

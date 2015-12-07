@@ -30,6 +30,7 @@ angular.module('myApp', []).
     });*/
     
     function intervalPromise(millis, count) {
+        debugger;
         var deferred = $q.defer();
         
         if(count <= 0) {
@@ -46,7 +47,7 @@ angular.module('myApp', []).
             }
         }, millis);
         
-        return deferred.promise();
+        return deferred.promise;
     }
     
     intervalPromise(500, 4).then(

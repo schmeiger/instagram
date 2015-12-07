@@ -6,8 +6,10 @@ angular.module('myApp', [])
     })
 	.controller('instagramRequest', function($scope, $http, $location, $window) {
         if ($location.path().indexOf('/access_token=') == -1) {
-            var clientId = '681d0c31ac454bdfac1d543911565da7';
-            var targetUri = encodeURIComponent('http://localhost:5757/');
+            // var clientId = '681d0c31ac454bdfac1d543911565da7';
+            // var targetUri = encodeURIComponent('http://localhost:5757/');
+            var clientId = '948bc6f0f8d5452196436abf6c1cb743';
+            var targetUri = encodeURIComponent('http://localhost:8080/thinkful/ANGULAR-JS/students/natali/instagram/index.html');
             $window.location.href = 'https://instagram.com/oauth/authorize/?client_id=' + clientId + '&redirect_uri=' + targetUri + '&response_type=token&scope=public_content';
             return;
         }
@@ -23,19 +25,45 @@ angular.module('myApp', [])
 			**********************************************/
 
             var url = 'https://api.instagram.com/v1/tags/search' + '?q=' + searchWord + '&access_token=' + $scope.code + '&callback=JSON_CALLBACK';
-            
+            $scope.instagramResponse = new Array();
 			$http.jsonp(url)
-				  .then(
-					  function(response) {
-					    $scope.instagramResponse = response.data;
-				    	console.log($scope.instagramResponse);
-					  },
-					  function(error) {
-					    console.log('Failure :(');
-					    // called when an error occurs or
-					    // the server returns data with an error status
-					  }
-				  );
+				.then(
+				  function(response) {
+				  	if (response == null) {
+				  		return;
+				  	};
+
+				  	for (var i=0; i<response.data.data.length; i++) {
+				  		var tag = response.data.data[i];
+				  		var url = 'https://api.instagram.com/v1/tags/' + tag.name + '/media/recent?access_token=' + $scope.code + '&callback=JSON_CALLBACK';
+
+				  		$http.jsonp(url)
+				  			.then(
+				  				function(response) {
+				  					if (response == null) {
+				  						return;
+				  					};
+
+				  					for (var i=0; i<response.data.data.length; i++) {
+				  						var media = response.data.data[i];
+				  						$scope.instagramResponse[$scope.instagramResponse.length] = media.images.thumbnail;
+				  					};				  					
+				  				},
+				  				function(error) {
+				  					console.log('Details Search ' + tag.name + 'Failure :(');
+				  				}
+				  			);
+				  	}
+				    
+				    // $scope.instagramResponse = response.data;
+					// console.log($scope.instagramResponse);
+				  },
+				  function(error) {
+				    console.log('Tag Search Failure :(');
+				    // called when an error occurs or
+				    // the server returns data with an error status
+				  }
+				);
 
 			/*********************************************
 			* Get The Images / Doesn't work :(
